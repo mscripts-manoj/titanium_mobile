@@ -12,10 +12,12 @@ import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
+import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.proxy.TiViewProxy;
 import org.appcelerator.titanium.util.TiConvert;
 import org.appcelerator.titanium.util.TiUIHelper;
+import org.appcelerator.titanium.util.TypefaceSpan;
 
 import android.app.Activity;
 import android.text.Spannable;
@@ -26,7 +28,6 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.StyleSpan;
-import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 
@@ -147,7 +148,7 @@ public class AttributedStringProxy extends KrollProxy
 														Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 												}
 												if (fontProperties[TiUIHelper.FONT_FAMILY_POSITION] != null) {
-													spannableText.setSpan(new TypefaceSpan(fontProperties[TiUIHelper.FONT_FAMILY_POSITION]),
+													spannableText.setSpan(new TypefaceSpan(TiApplication.getInstance(), fontProperties[TiUIHelper.FONT_FAMILY_POSITION]),
 														range[0], range[0] + range[1], Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 												}
 											}
