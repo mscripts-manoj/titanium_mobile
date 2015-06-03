@@ -229,6 +229,7 @@
 		3A5AD7291BB9BEA8005B408B /* TiUIiOSPreviewContextProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AD7281BB9BEA8005B408B /* TiUIiOSPreviewContextProxy.m */; settings = {ASSET_TAGS = (); }; };
 		3AB9137C1BB60F070063A4AD /* TiPreviewingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9137B1BB60F070063A4AD /* TiPreviewingDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		3AB913801BB61FDA0063A4AD /* TiUIiOSPreviewActionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9137F1BB61FDA0063A4AD /* TiUIiOSPreviewActionProxy.m */; settings = {ASSET_TAGS = (); }; };
+		43B8BC8F1C00BCEC009FA487 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B8BC8E1C00BCEC009FA487 /* CoreTelephony.framework */; };
 		4688700715E39A9D008FA326 /* TiUIiPhoneAlertDialogStyleProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4688700615E39A9D008FA326 /* TiUIiPhoneAlertDialogStyleProxy.m */; };
 		4D3033A3136239B30034640F /* TiFilesystemFileStreamProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3033A2136239B30034640F /* TiFilesystemFileStreamProxy.m */; };
 		502A68DA16EEAA7500661EF6 /* TiUIListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 502A68D116EEAA7500661EF6 /* TiUIListItem.m */; };
@@ -761,6 +762,7 @@
 		3AB9137B1BB60F070063A4AD /* TiPreviewingDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiPreviewingDelegate.m; sourceTree = "<group>"; };
 		3AB9137E1BB61FDA0063A4AD /* TiUIiOSPreviewActionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIiOSPreviewActionProxy.h; sourceTree = "<group>"; };
 		3AB9137F1BB61FDA0063A4AD /* TiUIiOSPreviewActionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiUIiOSPreviewActionProxy.m; sourceTree = "<group>"; };
+		43B8BC8E1C00BCEC009FA487 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4688700515E39A9D008FA326 /* TiUIiPhoneAlertDialogStyleProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUIiPhoneAlertDialogStyleProxy.h; sourceTree = "<group>"; };
 		4688700615E39A9D008FA326 /* TiUIiPhoneAlertDialogStyleProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiUIiPhoneAlertDialogStyleProxy.m; sourceTree = "<group>"; };
 		4D3033A1136239B30034640F /* TiFilesystemFileStreamProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TiFilesystemFileStreamProxy.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -978,6 +980,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B8BC8F1C00BCEC009FA487 /* CoreTelephony.framework in Frameworks */,
 				84ED2CD01AEEC0C00049FB68 /* iAd.framework in Frameworks */,
 				8465E6BC19F8644D008479E6 /* CoreMedia.framework in Frameworks */,
 				84D4CA1619EF0B5A009131F8 /* CoreMotion.framework in Frameworks */,
@@ -2067,6 +2070,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43B8BC8E1C00BCEC009FA487 /* CoreTelephony.framework */,
 				84ED2CCD1AEEC0A70049FB68 /* iAd.framework */,
 				8465E6BB19F8644D008479E6 /* CoreMedia.framework */,
 				84D4CA1319EF0B3D009131F8 /* CoreMotion.framework */,
