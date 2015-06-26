@@ -946,7 +946,9 @@
 	NSIndexPath* index = indexPath;
 	if (viaSearch) {
 		index = [self indexPathFromSearchIndex:[indexPath row]];
-	}
+    } else if(searchResultIndexes != nil){
+        index = [self indexPathFromSearchIndexOnFilter:indexPath];
+    }
 	NSInteger sectionIdx = [index section];
 	NSArray * sections = [(TiUITableViewProxy *)[self proxy] internalSections];
 	TiUITableViewSectionProxy *section = [self sectionForIndex:sectionIdx];
@@ -1109,6 +1111,11 @@
             if (index != nil) {
                 indexPath = [self indexPathFromSearchIndex:[index row]];
             }
+        } else if(searchResultIndexes != nil){
+            NSIndexPath* index = [theTableView indexPathForRowAtPoint:point];
+            if (index != nil) {
+                indexPath = [self indexPathFromSearchIndexOnFilter:index];
+            }
         } else {
             indexPath = [theTableView indexPathForRowAtPoint:point];
         }
@@ -1165,6 +1172,11 @@
         NSIndexPath* index = [theTableView indexPathForRowAtPoint:point];
         if (index != nil) {
             indexPath = [self indexPathFromSearchIndex:[index row]];
+        }
+    } else if(searchResultIndexes != nil){
+        NSIndexPath* index = [theTableView indexPathForRowAtPoint:point];
+        if (index != nil) {
+            indexPath = [self indexPathFromSearchIndexOnFilter:index];
         }
     } else {
         indexPath = [theTableView indexPathForRowAtPoint:point];
@@ -1327,6 +1339,25 @@
 		index -= thisSetCount;
 	}
 	return nil;
+}
+
+//When search is done through filterText
+- (NSIndexPath *) indexPathFromSearchIndexOnFilter: (NSIndexPath*) indexPath
+{
+    NSInteger index = [indexPath row];
+    NSInteger section = [indexPath section];
+    NSIndexSet* theSection = [searchResultIndexes objectAtIndex:section];
+    if([theSection count] > index)
+    {
+        NSUInteger rowIndex = [theSection firstIndex];
+        while (index > 0)
+        {
+            rowIndex = [theSection indexGreaterThanIndex:rowIndex];
+            index --;
+        }
+        return [NSIndexPath indexPathForRow:rowIndex inSection:section];
+    }
+    return nil;
 }
 
 - (void)updateSearchResultIndexes
@@ -2117,9 +2148,11 @@ return result;	\
 - (UITableViewCell *)tableView:(UITableView *)ourTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSIndexPath* index = indexPath;
-	if (ourTableView != tableview || searchResultIndexes != nil) {
+	if (ourTableView != tableview) {
 		index = [self indexPathFromSearchIndex:[indexPath row]];
-	}
+    } else if(searchResultIndexes != nil){
+        index = [self indexPathFromSearchIndexOnFilter:indexPath];
+    }
 	
 	TiUITableViewRowProxy *row = [self rowForIndexPath:index];
 	[row triggerAttach];
@@ -2406,9 +2439,11 @@ return result;	\
 -(void)tableView:(UITableView *)ourTableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSIndexPath* index = indexPath;
-	if (ourTableView != tableview || searchResultIndexes != nil) {
+	if (ourTableView != tableview) {
 		index = [self indexPathFromSearchIndex:[indexPath row]];
-	}
+    } else if(searchResultIndexes != nil){
+        index = [self indexPathFromSearchIndexOnFilter:indexPath];
+    }
 	
 	TiUITableViewRowProxy *row = [self rowForIndexPath:index];
 	
@@ -2509,9 +2544,11 @@ return result;	\
 - (CGFloat)tableView:(UITableView *)ourTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
 	NSIndexPath* index = indexPath;
-	if (ourTableView != tableview || searchResultIndexes != nil) {
+	if (ourTableView != tableview) {
 		index = [self indexPathFromSearchIndex:[indexPath row]];
-	}
+    } else if(searchResultIndexes != nil){
+        index = [self indexPathFromSearchIndexOnFilter:indexPath];
+    }
 	
 	TiUITableViewRowProxy *row = [self rowForIndexPath:index];
     
